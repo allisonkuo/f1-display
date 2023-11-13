@@ -1,5 +1,7 @@
 import type { Config } from 'tailwindcss'
 
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -16,6 +18,13 @@ const config: Config = {
       colors: {
         'f1-red': '#EE0000',
         'f1-teal': '#00CCCC',
+      },
+      fontFamily: {
+        'display': ['var(--font-bungee)'],
+        sans: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
+      },
+      fontSize: {
+        'year': ['125px', '125px'],
       },
     },
   },
