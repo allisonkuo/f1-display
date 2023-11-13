@@ -18,6 +18,8 @@ const config: Config = {
       colors: {
         'f1-red': '#EE0000',
         'f1-teal': '#00CCCC',
+        'f1-dark-grey': '#343434',
+        'f1-grey': '#424242',
         'gradient-dark-red': '#3B0101',
       },
       fontFamily: {

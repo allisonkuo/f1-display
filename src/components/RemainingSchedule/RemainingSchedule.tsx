@@ -21,6 +21,12 @@ const RemainingSchedule = (): React.ReactNode => {
           Spanish GP
         </button>
       </div>
+
+      <div className='flex-none'>
+        <button className='bg-slate-300 font-bold rounded-2xl px-4 py-2 text-black'>
+          + See More
+        </button>
+      </div>
     </div>
   );
 };
