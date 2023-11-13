@@ -1,3 +1,4 @@
+import RemainingSchedule from '@/components/RemainingSchedule/RemainingSchedule';
 import UpcomingRace from '@/components/UpcomingRace/UpcomingRace';
 import Image from 'next/image';
 
@@ -30,15 +31,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='w-1/3 bg-f1-red p-4'>
-        <div className='flex flex-col'>
-          <div className='flex-none p-2'>
-            <p className='text-white'>Right Side</p>
-          </div>
-          <div className='flex-none p-2'>
-            <p className='text-white'>Test</p>
-          </div>
-        </div>
+      <div className='w-1/3 pt-24 bg-gradient-to-b from-f1-red to-gradient-dark-red'>
+        <RemainingSchedule />
       </div>
     </main>
   );

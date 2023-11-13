@@ -4,7 +4,7 @@ const UpcomingRace = () => {
   return (
     <div className='flex flex-col items-center text-center space-y-8 mb-4'>
       <div>
-        <h3 className='uppercase font-bold text-white font-sans'>
+        <h3 className='uppercase font-bold text-f1-teal font-sans'>
           Upcoming Race
         </h3>
       </div>

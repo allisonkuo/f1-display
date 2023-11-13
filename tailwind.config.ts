@@ -18,6 +18,7 @@ const config: Config = {
       colors: {
         'f1-red': '#EE0000',
         'f1-teal': '#00CCCC',
+        'gradient-dark-red': '#3B0101',
       },
       fontFamily: {
         'display': ['var(--font-bungee)'],
