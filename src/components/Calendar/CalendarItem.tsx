@@ -1,21 +1,42 @@
 import React from 'react';
+import Image from 'next/image';
 
 type CalendarItemProps = {
-  name: string;
+  raceName: string;
+  winner: string;
   isCompleted: boolean;
 };
 
 const CalendarItem = ({
-  name,
+  raceName,
+  winner,
   isCompleted,
 }: CalendarItemProps): React.ReactNode => {
   const borderColor = isCompleted ? 'border-f1-teal' : 'border-slate-300';
 
   return (
     <div
-      className={`bg-f1-grey px-4 py-5 border-2 rounded-2xl shadow-lg ${borderColor}`}
+      className={`flex bg-f1-grey border-2 rounded-2xl shadow-lg ${borderColor}`}
     >
-      <p className='text-white font-semibold uppercase text-xs'>{name}</p>
+      <div className='flex-auto w-3/4'>
+        <p className='pl-4 py-5 text-white font-semibold uppercase text-xs'>
+          {raceName}
+        </p>
+      </div>
+
+      <div className='flex-auto w-1/4 relative'>
+        {winner && winner.length > 0 ? (
+          <Image
+            src='/images/max-verstappen-transparent.png'
+            alt={`Portrait of ${winner}`}
+            fill
+            style={{
+              objectFit: 'cover',
+            }}
+            className='pt-2 rounded-br-2xl'
+          />
+        ) : null}
+      </div>
     </div>
   );
 };

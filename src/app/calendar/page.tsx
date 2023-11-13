@@ -4,7 +4,7 @@ import { races } from '@/lib/constants/races';
 export default function Calendar() {
   return (
     <div className='w-full'>
-      <h2 className='text-3xl font-display text-white mb-6'>
+      <h2 className='text-3xl font-display text-white mb-8'>
         F1 Calendar 2024
       </h2>
 
@@ -12,7 +12,8 @@ export default function Calendar() {
         {races.map((race) => (
           <CalendarItem
             key={race.name}
-            name={race.name}
+            raceName={race.name}
+            winner={race.winner}
             isCompleted={race.isCompleted}
           />
         ))}
