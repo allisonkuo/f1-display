@@ -25,8 +25,8 @@ const ScheduleLine = ({
 
 const RaceWeekendSchedule = (): React.ReactNode => {
   return (
-    <div className='h-full bg-f1-grey px-6 py-4 space-y-3'>
-      <h3 className='font-display text-white text-lg pb-2'>Schedule</h3>
+    <div className='h-full bg-f1-grey px-6 py-4 space-y-4'>
+      <h3 className='font-display text-white text-lg'>Schedule</h3>
       <ScheduleLine event='Free Practice 1' date='Fri, Oct 22' time='11:00' />
       <ScheduleLine event='Free Practice 2' date='Fri, Oct 22' time='15:00' />
       <ScheduleLine event='Free Practice 3' date='Sat, Oct 23' time='11:30' />

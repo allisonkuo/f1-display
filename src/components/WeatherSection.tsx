@@ -13,7 +13,7 @@ const WeatherItem = ({
   return (
     <div className='flex-auto p-2'>
       <Image src={imagePath} alt={altText} width={80} height={80} />
-      <p className='text-sm text-center mt-2'>76 &deg;F</p>
+      <p className='text-sm text-center text-white mt-2'>76 &deg;F</p>
     </div>
   );
 };

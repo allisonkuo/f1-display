@@ -1,3 +1,4 @@
+import RaceResultsGrid from '@/components/RaceResults/RaceResultsGrid';
 import RaceWeekendSchedule from '@/components/RaceWeekendSchedule';
 import WeatherSection from '@/components/WeatherSection';
 
@@ -26,7 +27,9 @@ export default function RaceCalendar() {
           </div>
         </div>
 
-        <div className='flex-auto bg-rose-300'></div>
+        <div className='flex-auto'>
+          <RaceResultsGrid />
+        </div>
       </div>
     </div>
   );

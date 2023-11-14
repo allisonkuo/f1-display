@@ -20,6 +20,7 @@ const config: Config = {
         'f1-teal': '#00CCCC',
         'f1-dark-grey': '#343434',
         'f1-grey': '#424242',
+        'f1-light-grey': '#D2D2D2',
         'gradient-dark-red': '#3B0101',
       },
       fontFamily: {
