@@ -16,8 +16,8 @@ const ScheduleLine = ({
 
   return (
     <div className='grid grid-cols-8'>
-      <p className={`col-span-3 text-sm ${fontWeight} ${fontColor}`}>{date}</p>
       <p className={`col-span-4 text-sm ${fontWeight} ${fontColor}`}>{event}</p>
+      <p className={`col-span-3 text-sm ${fontWeight} ${fontColor}`}>{date}</p>
       <p className={`col-span-1 text-sm ${fontWeight} ${fontColor}`}>{time}</p>
     </div>
   );

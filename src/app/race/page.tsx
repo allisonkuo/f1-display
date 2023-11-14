@@ -1,4 +1,5 @@
 import RaceWeekendSchedule from '@/components/RaceWeekendSchedule';
+import WeatherSection from '@/components/WeatherSection';
 
 export default function RaceCalendar() {
   return (
@@ -20,7 +21,9 @@ export default function RaceCalendar() {
           <div className='w-4/5'>
             <RaceWeekendSchedule />
           </div>
-          <div className='w-1/5 bg-yellow-200'></div>
+          <div className='w-1/5'>
+            <WeatherSection />
+          </div>
         </div>
 
         <div className='flex-auto bg-rose-300'></div>
