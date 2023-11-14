@@ -17,7 +17,7 @@ export default function RaceCalendar() {
         </div>
 
         <div className='h-[250px] flex space-x-4'>
-          <div className='w-4/5 bg-sky-500'>
+          <div className='w-4/5'>
             <RaceWeekendSchedule />
           </div>
           <div className='w-1/5 bg-yellow-200'></div>
