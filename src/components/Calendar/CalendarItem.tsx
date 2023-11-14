@@ -27,7 +27,7 @@ const CalendarItem = ({
       <div className='flex-auto w-1/4 relative'>
         {winner && winner.length > 0 ? (
           <Image
-            src='/images/max-verstappen-transparent.png'
+            src='/images/drivers/max-verstappen-transparent.png'
             alt={`Portrait of ${winner}`}
             fill
             style={{

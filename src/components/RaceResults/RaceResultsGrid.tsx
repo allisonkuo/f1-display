@@ -1,19 +1,54 @@
+import Image from 'next/image';
 import React from 'react';
+import ResultItemVertical from './ResultItemVertical';
+import ResultItemHorizontal from './ResultItemHorizontal';
 
 const RaceResultsGrid = (): React.ReactNode => {
   return (
     <div className='h-full flex space-x-4'>
+      {/* 
+        MAY NEED TO ADJUST
+        1st + Pole = 267.5 when middle chunk is 180px 
+        */}
+
       {/* 1st Place */}
-      <div className='flex-auto bg-f1-teal'></div>
+      <div className='w-[133.75px] bg-f1-teal'>
+        <ResultItemVertical
+          position='1'
+          driverName='VER'
+          imagePath='/images/drivers/max-verstappen-transparent.png'
+        />
+      </div>
 
       {/* 2nd and 3rd */}
-      <div className=' w-[62px] flex-auto flex flex-col space-y-4'>
-        <div className='h-1/2 bg-f1-teal'></div>
-        <div className='h-1/2 bg-f1-teal'></div>
+      <div className=' w-[180px] flex-none flex flex-col space-y-4'>
+        {/* 2nd Place */}
+        <div className='h-1/2 bg-f1-teal'>
+          <ResultItemHorizontal
+            position='2'
+            driverName='HAM'
+            imagePath='/images/drivers/lewis-hamilton-transparent.png'
+          />
+        </div>
+
+        {/* 3rd Place */}
+        <div className='h-1/2 bg-f1-teal'>
+          <ResultItemHorizontal
+            position='3'
+            driverName='LEC'
+            imagePath='/images/drivers/charles-leclerc-transparent.png'
+          />
+        </div>
       </div>
 
       {/* Pole */}
-      <div className='flex-auto bg-f1-light-grey'></div>
+      <div className='flex-auto bg-f1-light-grey'>
+        <ResultItemVertical
+          position='Pole'
+          driverName='NOR'
+          imagePath='/images/drivers/lando-norris-transparent.png'
+        />
+      </div>
     </div>
   );
 };
