@@ -8,23 +8,23 @@ const RemainingSchedule = (): React.ReactNode => {
         <h3 className='font-bold uppercase text-black'>Remaining Schedule</h3>
       </div>
       <div className='flex-none'>
-        <button className='border-2 border-slate-300 font-bold uppercase rounded-2xl px-6 py-3 text-white shadow-lg'>
+        <button className='border-2 border-slate-300 font-semibold uppercase rounded-2xl px-6 py-3 text-xs text-white shadow-lg'>
           Monaco GP
         </button>
       </div>
       <div className='flex-none'>
-        <button className='border-2 border-slate-300 font-bold uppercase rounded-2xl px-6 py-3 text-white shadow-lg'>
+        <button className='border-2 border-slate-300 font-semibold uppercase rounded-2xl px-6 py-3 text-xs text-white shadow-lg'>
           Canadian GP
         </button>
       </div>
       <div className='flex-none'>
-        <button className='border-2 border-slate-300 font-bold uppercase rounded-2xl px-6 py-3 text-white shadow-lg'>
+        <button className='border-2 border-slate-300 font-semibold uppercase rounded-2xl px-6 py-3 text-xs text-white shadow-lg'>
           Spanish GP
         </button>
       </div>
 
       <div className='flex-none'>
-        <button className='bg-slate-300 font-bold rounded-2xl px-4 py-2 text-black'>
+        <button className='bg-slate-300 font-semibold rounded-2xl px-4 py-2 text-xs text-black'>
           <Link href='/calendar'>+ See More</Link>
         </button>
       </div>
