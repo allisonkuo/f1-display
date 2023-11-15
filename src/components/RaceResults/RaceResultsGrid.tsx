@@ -8,11 +8,11 @@ const RaceResultsGrid = (): React.ReactNode => {
     <div className='h-full flex space-x-4'>
       {/* 
         MAY NEED TO ADJUST
-        1st + Pole = 267.5 when middle chunk is 180px 
+        1st + Pole = 268 when middle chunk is 180px 
         */}
 
       {/* 1st Place */}
-      <div className='w-[133.75px] bg-f1-teal'>
+      <div className='w-[134px] bg-f1-teal'>
         <ResultItemVertical
           position='1'
           driverName='VER'

@@ -1,13 +1,15 @@
+import CircuitInfo from '@/components/CircuitInfo';
 import RaceResultsGrid from '@/components/RaceResults/RaceResultsGrid';
 import RaceWeekendSchedule from '@/components/RaceWeekendSchedule';
 import WeatherSection from '@/components/WeatherSection';
+import Image from 'next/image';
 
 export default function RaceCalendar() {
   return (
     <div className='flex w-full space-x-4'>
       {/* May have to use a fixed width to get proportion right */}
-      <div className='w-1/2 bg-lime-300'>
-        <h3>Circuit Info Section</h3>
+      <div className='w-1/2'>
+        <CircuitInfo />
       </div>
 
       <div className='w-1/2 flex flex-col space-y-4'>
