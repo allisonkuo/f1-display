@@ -8,7 +8,7 @@ export default function RaceCalendar() {
   return (
     <div className='flex w-full space-x-4'>
       {/* May have to use a fixed width to get proportion right */}
-      <div className='w-1/2'>
+      <div className='w-1/2 shadow-lg'>
         <CircuitInfo />
       </div>
 
@@ -21,10 +21,10 @@ export default function RaceCalendar() {
         </div>
 
         <div className='h-[250px] flex space-x-4'>
-          <div className='w-4/5'>
+          <div className='w-4/5 shadow-lg'>
             <RaceWeekendSchedule />
           </div>
-          <div className='w-1/5'>
+          <div className='w-1/5 shadow-lg'>
             <WeatherSection />
           </div>
         </div>

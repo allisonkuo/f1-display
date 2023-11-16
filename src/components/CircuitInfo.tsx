@@ -69,7 +69,7 @@ const CircuitInfo = (): React.ReactNode => {
           />
         </div>
         <div className='w-2/5'>
-          <p className='text-xs text-white py-2 pl-3 pr-5'>
+          <p className='text-2xs text-white py-2 pl-3 pr-5'>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga sunt,
             corrupti minus molestiae autem aliquam dolores quisquam facere
             quaerat, similique, perspiciatis iure laborum facilis dolorem

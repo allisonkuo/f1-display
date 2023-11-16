@@ -11,8 +11,17 @@ const RaceResultsGrid = (): React.ReactNode => {
         1st + Pole = 268 when middle chunk is 180px 
         */}
 
+      {/* Pole */}
+      <div className='flex-auto bg-f1-light-grey shadow-lg'>
+        <ResultItemVertical
+          position='Pole'
+          driverName='NOR'
+          imagePath='/images/drivers/lando-norris-transparent.png'
+        />
+      </div>
+
       {/* 1st Place */}
-      <div className='w-[134px] bg-f1-teal'>
+      <div className='w-[134px] bg-f1-teal shadow-lg'>
         <ResultItemVertical
           position='1'
           driverName='VER'
@@ -23,7 +32,7 @@ const RaceResultsGrid = (): React.ReactNode => {
       {/* 2nd and 3rd */}
       <div className=' w-[180px] flex-none flex flex-col space-y-4'>
         {/* 2nd Place */}
-        <div className='h-1/2 bg-f1-teal'>
+        <div className='h-1/2 bg-f1-teal shadow-lg'>
           <ResultItemHorizontal
             position='2'
             driverName='HAM'
@@ -32,22 +41,13 @@ const RaceResultsGrid = (): React.ReactNode => {
         </div>
 
         {/* 3rd Place */}
-        <div className='h-1/2 bg-f1-teal'>
+        <div className='h-1/2 bg-f1-teal shadow-lg'>
           <ResultItemHorizontal
             position='3'
             driverName='LEC'
             imagePath='/images/drivers/charles-leclerc-transparent.png'
           />
         </div>
-      </div>
-
-      {/* Pole */}
-      <div className='flex-auto bg-f1-light-grey'>
-        <ResultItemVertical
-          position='Pole'
-          driverName='NOR'
-          imagePath='/images/drivers/lando-norris-transparent.png'
-        />
       </div>
     </div>
   );

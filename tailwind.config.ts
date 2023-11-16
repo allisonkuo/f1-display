@@ -28,6 +28,7 @@ const config: Config = {
         sans: ['var(--font-montserrat)', ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
+        '2xs': ['11px', '1rem'],
         'year': ['125px', '125px'],
       },
     },

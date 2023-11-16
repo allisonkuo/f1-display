@@ -2,7 +2,7 @@ import Countdown from './CountdownTimer';
 
 const UpcomingRace = () => {
   return (
-    <div className='flex flex-col items-center text-center space-y-8 mb-4'>
+    <div className='flex flex-col items-center text-center space-y-8 mb-5'>
       <div>
         <h4 className='uppercase font-bold text-f1-teal font-sans'>
           Upcoming Race
