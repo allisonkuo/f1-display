@@ -1,6 +1,7 @@
 import RemainingSchedule from '@/components/RemainingSchedule/RemainingSchedule';
 import UpcomingRace from '@/components/UpcomingRace/UpcomingRace';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -8,9 +9,11 @@ export default function Home() {
       {/* Left Half */}
       <div className='flex-auto bg-black'>
         <div className='flex flex-col h-full'>
-          <div className='flex h-3/5 justify-center items-end'>
-            <div className='flex-auto pl-20'>
-              <UpcomingRace />
+          <div className='flex h-3/5 justify-center'>
+            <div className='flex-auto pl-20 pt-24'>
+              <Link href='/race'>
+                <UpcomingRace />
+              </Link>
             </div>
             <div className='w-[105px] h-full relative'>
               {/* a placeholder for the YEAR text */}
@@ -28,7 +31,7 @@ export default function Home() {
           <div className='h-2/5 relative'>
             <Image
               src='/images/ferrari-dark-cropped.jpeg'
-              alt='Picture of the author'
+              alt='Cover image of a Ferrari SF-23'
               fill
               objectFit='cover'
             />
