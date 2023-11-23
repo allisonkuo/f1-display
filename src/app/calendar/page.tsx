@@ -24,12 +24,13 @@ export default function Calendar() {
       </div>
       <div className='grid grid-flow-col grid-rows-6 grid-cols-4 gap-5'>
         {races.map((race) => (
-          <CalendarItem
-            key={race.name}
-            raceName={race.name}
-            winner={race.winner}
-            isCompleted={race.isCompleted}
-          />
+          <Link key={race.name} href={`/${race.name}`}>
+            <CalendarItem
+              raceName={race.name}
+              winner={race.winner}
+              isCompleted={race.isCompleted}
+            />
+          </Link>
         ))}
       </div>
     </div>
