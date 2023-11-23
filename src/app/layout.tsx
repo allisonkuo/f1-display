@@ -1,15 +1,21 @@
 import type { Metadata } from 'next';
-import { Bungee } from 'next/font/google';
+import { Bungee, Orbitron, Paytone_One, Russo_One } from 'next/font/google';
 import { Inter } from 'next/font/google';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 
+// Other options: Russo One at 700
+//                Orbitron at 900
+//                Payton One at 400
 const bungee = Bungee({
   weight: '400',
   variable: '--font-bungee',
   subsets: ['latin'],
 });
-const inter = Inter({ variable: '--font-inter', subsets: ['latin'] });
+const inter = Inter({
+  variable: '--font-inter',
+  subsets: ['latin'],
+});
 const montserrat = Montserrat({
   variable: '--font-montserrat',
   subsets: ['latin'],

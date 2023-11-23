@@ -5,7 +5,7 @@ import WeatherSection from '@/components/WeatherSection';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function RaceCalendar() {
+export default function RaceDetails() {
   return (
     <div className='flex w-full space-x-4'>
       {/* May have to use a fixed width to get proportion right */}
