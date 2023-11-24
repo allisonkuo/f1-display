@@ -1,5 +1,4 @@
 import CalendarItem from '@/components/Calendar/CalendarItem';
-import { races } from '@/lib/constants/races';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -31,7 +30,7 @@ export default async function Calendar() {
             <CalendarItem
               raceName={race.EventName.replace('Grand Prix', 'GP')}
               winner={'Max Verstappen'}
-              isCompleted={true}
+              isCompleted={race.HasEventCompleted}
             />
           </Link>
         ))}
