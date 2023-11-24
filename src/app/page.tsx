@@ -3,10 +3,7 @@ import UpcomingRace from '@/components/UpcomingRace/UpcomingRace';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default async function Home() {
-  const res = await fetch('http://localhost:3000/api/raceschedule');
-  console.log(await res.json());
-
+export default function Home() {
   return (
     <main className='flex flex-row min-h-screen'>
       {/* Left Half */}

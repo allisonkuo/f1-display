@@ -3,7 +3,10 @@ import { races } from '@/lib/constants/races';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Calendar() {
+export default async function Calendar() {
+  const res = await fetch('http://localhost:3000/api/racecalendar');
+  const races = await res.json();
+
   return (
     <div className='w-full'>
       <div className='flex'>
@@ -23,12 +26,12 @@ export default function Calendar() {
         </div>
       </div>
       <div className='grid grid-flow-col grid-rows-6 grid-cols-4 gap-5'>
-        {races.map((race) => (
-          <Link key={race.name} href={`/${race.name}`}>
+        {races.map((race: any) => (
+          <Link key={race.RoundNumber} href={`/${race.RoundNumber}`}>
             <CalendarItem
-              raceName={race.name}
-              winner={race.winner}
-              isCompleted={race.isCompleted}
+              raceName={race.EventName.replace('Grand Prix', 'GP')}
+              winner={'Max Verstappen'}
+              isCompleted={true}
             />
           </Link>
         ))}
