@@ -3,7 +3,10 @@ import UpcomingRace from '@/components/UpcomingRace/UpcomingRace';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch('http://127.0.0.1:8000/api/healthcheck');
+  console.log(res);
+
   return (
     <main className='flex flex-row min-h-screen'>
       {/* Left Half */}
@@ -34,6 +37,7 @@ export default function Home() {
             <Image
               src='/images/ferrari-dark-cropped.jpeg'
               alt='Cover image of a Ferrari SF-23'
+              fill
               style={{
                 objectFit: 'cover',
               }}
