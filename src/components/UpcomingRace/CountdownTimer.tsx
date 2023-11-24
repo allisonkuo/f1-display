@@ -14,7 +14,7 @@ const Countdown = (): React.ReactNode => {
         </div>
       </div>
       <div>
-        <div className='flex flex-col w-[90px] py-3 bg-f1-teal justify-center items-center border-x border-white'>
+        <div className='flex flex-col w-[90px] py-3 bg-f1-teal justify-center items-center border-x border-black'>
           <p className='text-white text-5xl font-extrabold'>12</p>
           <p className='text-sm uppercase text-white tracking-widest'>hrs</p>
         </div>

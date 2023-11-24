@@ -36,3 +36,7 @@ next-env.d.ts
 
 # prisma
 .env
+
+# python
+venv/
+api/__pycache__/

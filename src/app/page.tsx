@@ -3,7 +3,10 @@ import UpcomingRace from '@/components/UpcomingRace/UpcomingRace';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch('http://localhost:3000/api/raceschedule');
+  console.log(await res.json());
+
   return (
     <main className='flex flex-row min-h-screen'>
       {/* Left Half */}
@@ -24,7 +27,9 @@ export default function Home() {
                 src='/images/2024-transparent.png'
                 alt='the year'
                 fill
-                objectFit='contain'
+                style={{
+                  objectFit: 'contain',
+                }}
               />
             </div>
           </div>
@@ -33,7 +38,10 @@ export default function Home() {
               src='/images/ferrari-dark-cropped.jpeg'
               alt='Cover image of a Ferrari SF-23'
               fill
-              objectFit='cover'
+              style={{
+                objectFit: 'cover',
+              }}
+              priority
             />
           </div>
         </div>

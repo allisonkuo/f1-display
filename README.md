@@ -4,8 +4,13 @@ Creating a Formula 1 themed kiosk-like display to be used primarily (at least fo
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
+First, create a virtual environment for the Flask project:
+```bash
+python3 -m venv venv
+```
+This should trigger your IDE to automatically activate the necessary extensions and the virtual environment. If your IDE doesn’t do it automatically, open a terminal within the IDE and run `source venv/bin/activate` to manually activate the virtual environment.
 
-First, run the development server:
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -17,7 +22,11 @@ pnpm dev
 bun dev
 ```
 
+We use the [`concurrently`](https://www.npmjs.com/package/concurrently) package to run both Flask and Next.js development servers simultaneously. 
+
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/api/healthcheck](http://localhost:3000/api/healthcheck) to verify that the Flask server is up and running.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
