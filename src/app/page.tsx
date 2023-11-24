@@ -4,8 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default async function Home() {
-  const res = await fetch('http://127.0.0.1:8000/api/healthcheck');
-  console.log(res);
+  const res = await fetch('http://localhost:3000/api/raceschedule');
+  console.log(await res.json());
 
   return (
     <main className='flex flex-row min-h-screen'>
