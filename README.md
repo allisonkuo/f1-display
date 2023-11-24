@@ -26,7 +26,7 @@ We use the [`concurrently`](https://www.npmjs.com/package/concurrently) package 
 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-Open [http://localhost:3000/api/healthchecker](http://localhost:3000/api/healthchecker) to verify that the Flask server is up and running.
+Open [http://localhost:3000/api/healthcheck](http://localhost:3000/api/healthcheck) to verify that the Flask server is up and running.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
