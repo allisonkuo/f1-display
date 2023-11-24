@@ -24,7 +24,9 @@ export default function Home() {
                 src='/images/2024-transparent.png'
                 alt='the year'
                 fill
-                objectFit='contain'
+                style={{
+                  objectFit: 'contain',
+                }}
               />
             </div>
           </div>
@@ -32,8 +34,10 @@ export default function Home() {
             <Image
               src='/images/ferrari-dark-cropped.jpeg'
               alt='Cover image of a Ferrari SF-23'
-              fill
-              objectFit='cover'
+              style={{
+                objectFit: 'cover',
+              }}
+              priority
             />
           </div>
         </div>
