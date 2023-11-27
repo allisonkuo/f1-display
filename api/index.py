@@ -24,5 +24,25 @@ def get_race_calendar():
     parsed_schedule = event_schedule.iloc[1:][['RoundNumber', 'EventName', 'HasEventCompleted']]
     return parsed_schedule.to_json(orient="records")
 
+@app.route("/api/raceinfo/<race_round>", methods=["GET"])
+def get_race_info(race_round):
+    race_event = fastf1.get_event(2023, int(race_round))
+
+    qual_session = race_event.get_qualifying()
+    qual_session.load()
+
+    race_session = race_event.get_race()
+    race_session.load()
+
+    fields = ['DriverNumber', 'Abbreviation', 'FullName', 'ClassifiedPosition']
+    pole_position = qual_session.results.iloc[0][fields]
+    race_podium = race_session.results.iloc[:3][fields]
+
+    return {
+        "pole": pole_position.to_json(),
+        "podium": race_podium.to_json(orient="records")
+    }
+
+
 if __name__ == "__main__":
     app.run()

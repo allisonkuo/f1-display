@@ -2,7 +2,18 @@ import React from 'react';
 import ResultItemVertical from './ResultItemVertical';
 import ResultItemHorizontal from './ResultItemHorizontal';
 
-const RaceResultsGrid = (): React.ReactNode => {
+type RaceResultsGridProps = {
+  results: any;
+};
+
+const RaceResultsGrid = ({
+  results,
+}: RaceResultsGridProps): React.ReactNode => {
+  const pole = JSON.parse(results['pole']);
+  const podium = JSON.parse(results['podium']);
+
+  console.log(pole);
+  console.log(podium);
   return (
     <div className='h-full flex space-x-4'>
       {/* 
@@ -14,7 +25,7 @@ const RaceResultsGrid = (): React.ReactNode => {
       <div className='flex-auto bg-f1-light-grey shadow-lg'>
         <ResultItemVertical
           position='Pole'
-          driverName='NOR'
+          driverName={pole['Abbreviation']}
           imagePath='/images/drivers/lando-norris-transparent.png'
         />
       </div>
@@ -23,7 +34,7 @@ const RaceResultsGrid = (): React.ReactNode => {
       <div className='w-[134px] bg-f1-teal shadow-lg'>
         <ResultItemVertical
           position='1'
-          driverName='VER'
+          driverName={podium[0]['Abbreviation']}
           imagePath='/images/drivers/max-verstappen-transparent.png'
         />
       </div>
@@ -34,7 +45,7 @@ const RaceResultsGrid = (): React.ReactNode => {
         <div className='h-1/2 bg-f1-teal shadow-lg'>
           <ResultItemHorizontal
             position='2'
-            driverName='HAM'
+            driverName={podium[1]['Abbreviation']}
             imagePath='/images/drivers/lewis-hamilton-transparent.png'
           />
         </div>
@@ -43,7 +54,7 @@ const RaceResultsGrid = (): React.ReactNode => {
         <div className='h-1/2 bg-f1-teal shadow-lg'>
           <ResultItemHorizontal
             position='3'
-            driverName='LEC'
+            driverName={podium[2]['Abbreviation']}
             imagePath='/images/drivers/charles-leclerc-transparent.png'
           />
         </div>

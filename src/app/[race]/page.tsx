@@ -5,7 +5,10 @@ import WeatherSection from '@/components/WeatherSection';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function RaceDetails() {
+export default async function RaceDetails() {
+  const res = await fetch('http://localhost:3000/api/raceinfo/2');
+  const results = await res.json();
+
   return (
     <div className='flex w-full space-x-4'>
       {/* May have to use a fixed width to get proportion right */}
@@ -48,7 +51,7 @@ export default function RaceDetails() {
         </div>
 
         <div className='flex-auto'>
-          <RaceResultsGrid />
+          <RaceResultsGrid results={results} />
         </div>
       </div>
     </div>

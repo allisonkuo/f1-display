@@ -24,7 +24,7 @@ const CalendarItem = ({
         </p>
       </div>
 
-      <div className='flex-auto w-1/4 relative'>
+      {/* <div className='flex-auto w-1/4 relative'>
         {winner && winner.length > 0 ? (
           <Image
             src='/images/drivers/max-verstappen-transparent.png'
@@ -36,7 +36,7 @@ const CalendarItem = ({
             className='pt-2 rounded-br-2xl'
           />
         ) : null}
-      </div>
+      </div> */}
     </div>
   );
 };
