@@ -1,3 +1,4 @@
+import { parse } from 'path';
 import React from 'react';
 
 type ScheduleLineProps = {
@@ -23,7 +24,21 @@ const ScheduleLine = ({
   );
 };
 
-const RaceWeekendSchedule = (): React.ReactNode => {
+type RaceWeekendScheduleProps = {
+  schedule: any;
+};
+
+const RaceWeekendSchedule = ({
+  schedule,
+}: RaceWeekendScheduleProps): React.ReactNode => {
+  const parsedSchedule = JSON.parse(schedule);
+  console.log(parsedSchedule);
+
+  // convert time to pst here?
+  const seshOne = parsedSchedule['Session1DateUtc'];
+  const pstDate = utcToPst(seshOne);
+  console.log(pstDate);
+
   return (
     <div className='h-full bg-f1-grey px-6 py-4 space-y-4'>
       <h3 className='font-display text-white text-lg'>Schedule</h3>
@@ -34,6 +49,13 @@ const RaceWeekendSchedule = (): React.ReactNode => {
       <ScheduleLine event='RACE DAY' date='Sun, Oct 24' time='13:00' />
     </div>
   );
+};
+
+const utcToPst = (epoch: string) => {
+  const utcDate = new Date(epoch);
+  return utcDate.toLocaleString('en-US', {
+    timeZone: 'America/Los_Angeles',
+  });
 };
 
 export default RaceWeekendSchedule;

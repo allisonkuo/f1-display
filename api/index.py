@@ -26,7 +26,9 @@ def get_race_calendar():
 
 @app.route("/api/raceinfo/<race_round>", methods=["GET"])
 def get_race_info(race_round):
-    race_event = fastf1.get_event(2023, int(race_round))
+    round = int(race_round)
+    event_schedule = fastf1.get_event_schedule(2023)
+    race_event = event_schedule.get_event_by_round(round)
 
     qual_session = race_event.get_qualifying()
     qual_session.load()
@@ -38,11 +40,17 @@ def get_race_info(race_round):
     pole_position = qual_session.results.iloc[0][fields]
     race_podium = race_session.results.iloc[:3][fields]
 
+    race_schedule = event_schedule.iloc[round]
+
     return {
         "pole": pole_position.to_json(),
-        "podium": race_podium.to_json(orient="records")
+        "podium": race_podium.to_json(orient="records"),
+        "schedule": race_schedule.to_json()
     }
 
+def localize_datetime(date):
+    app.logger.warning(date)
+    return date.tz_convert('US/Pacific')
 
 if __name__ == "__main__":
     app.run()

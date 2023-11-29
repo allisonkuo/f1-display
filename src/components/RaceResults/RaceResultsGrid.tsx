@@ -14,6 +14,7 @@ const RaceResultsGrid = ({
 
   console.log(pole);
   console.log(podium);
+
   return (
     <div className='h-full flex space-x-4'>
       {/* 

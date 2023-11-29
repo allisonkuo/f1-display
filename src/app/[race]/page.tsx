@@ -43,7 +43,7 @@ export default async function RaceDetails() {
 
         <div className='h-[250px] flex space-x-4'>
           <div className='w-4/5 shadow-lg'>
-            <RaceWeekendSchedule />
+            <RaceWeekendSchedule schedule={results['schedule']} />
           </div>
           <div className='w-1/5 shadow-lg'>
             <WeatherSection />
