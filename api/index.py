@@ -27,13 +27,12 @@ def get_race_calendar():
 @app.route("/api/raceinfo/<race_round>", methods=["GET"])
 def get_race_info(race_round):
     round = int(race_round)
-    race_event = fastf1.get_event(2023, round)
 
-    qual_session = race_event.get_qualifying()
-    qual_session.load()
+    qual_session = fastf1.get_session(2023, round, 'Qualifying')
+    qual_session.load(telemetry = "false", weather="false", messages = "false")
 
-    race_session = race_event.get_race()
-    race_session.load()
+    race_session = fastf1.get_session(2023, round, 'Race')
+    race_session.load(telemetry = "false", weather="false", messages = "false")
 
     fields = ['DriverNumber', 'Abbreviation', 'FullName', 'ClassifiedPosition']
     pole_position = qual_session.results.iloc[0][fields]
