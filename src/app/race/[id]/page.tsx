@@ -6,29 +6,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
-// async function getRaceInfo(raceId: string) {
-//   const res = await fetch(`http://localhost:3000/api/raceinfo/${raceId}`);
-//   return res.json();
-// }
-
-// async function getRaceSchedule(raceId: string) {
-//   const res = await fetch(`http://localhost:3000/api/raceschedule/${raceId}`);
-//   return res.json();
-// }
-
 export default async function RaceDetails({
   params,
 }: {
   params: { id: string };
 }) {
-  // const raceInfo = getRaceInfo(params.id);
-  // const raceSchedule = getRaceSchedule(params.id);
-
-  // const [results, schedule] = await Promise.all([raceInfo, raceSchedule]);
-
-  // console.log(results);
-  // console.log(schedule);
-
   return (
     <div className='flex w-full space-x-4'>
       {/* May have to use a fixed width to get proportion right */}
