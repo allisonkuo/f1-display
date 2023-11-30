@@ -5,13 +5,31 @@ import WeatherSection from '@/components/WeatherSection';
 import Image from 'next/image';
 import Link from 'next/link';
 
+async function getRaceInfo(raceId: string) {
+  const res = await fetch(`http://localhost:3000/api/raceinfo/${raceId}`);
+  return res.json();
+}
+
+async function getRaceSchedule(raceId: string) {
+  const res = await fetch(`http://localhost:3000/api/raceschedule/${raceId}`);
+  return res.json();
+}
+
 export default async function RaceDetails({
   params,
 }: {
   params: { id: string };
 }) {
-  const res = await fetch(`http://localhost:3000/api/raceinfo/${params.id}`);
-  const results = await res.json();
+  // const res = await fetch(`http://localhost:3000/api/raceinfo/${params.id}`);
+  // const results = await res.json();
+
+  const raceInfo = getRaceInfo(params.id);
+  const raceSchedule = getRaceSchedule(params.id);
+
+  const [results, schedule] = await Promise.all([raceInfo, raceSchedule]);
+
+  console.log(results);
+  console.log(schedule);
 
   return (
     <div className='flex w-full space-x-4'>
@@ -47,7 +65,7 @@ export default async function RaceDetails({
 
         <div className='h-[250px] flex space-x-4'>
           <div className='w-4/5 shadow-lg'>
-            <RaceWeekendSchedule schedule={results['schedule']} />
+            <RaceWeekendSchedule schedule={schedule['data']} />
           </div>
           <div className='w-1/5 shadow-lg'>
             <WeatherSection />

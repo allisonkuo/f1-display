@@ -12,9 +12,6 @@ const RaceResultsGrid = ({
   const pole = JSON.parse(results['pole']);
   const podium = JSON.parse(results['podium']);
 
-  console.log(pole);
-  console.log(podium);
-
   return (
     <div className='h-full flex space-x-4'>
       {/* 
