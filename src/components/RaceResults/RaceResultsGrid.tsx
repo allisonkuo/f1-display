@@ -3,12 +3,20 @@ import ResultItemVertical from './ResultItemVertical';
 import ResultItemHorizontal from './ResultItemHorizontal';
 
 type RaceResultsGridProps = {
-  results: any;
+  raceId: string;
 };
 
-const RaceResultsGrid = ({
-  results,
-}: RaceResultsGridProps): React.ReactNode => {
+async function getRaceInfo(raceId: string) {
+  const res = await fetch(`http://localhost:3000/api/raceinfo/${raceId}`);
+  return res.json();
+}
+
+const RaceResultsGrid = async ({
+  raceId,
+}: RaceResultsGridProps): Promise<React.ReactNode> => {
+  const res = getRaceInfo(raceId);
+  const results = await Promise.resolve(res);
+
   const pole = JSON.parse(results['pole']);
   const podium = JSON.parse(results['podium']);
 

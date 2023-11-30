@@ -74,7 +74,7 @@ export default async function RaceDetails({
 
         <div className='flex-auto'>
           <Suspense fallback={<p>Race results is loading...</p>}>
-            {/* <RaceResultsGrid results={results} /> */}
+            <RaceResultsGrid raceId={params.id} />
           </Suspense>
         </div>
       </div>
