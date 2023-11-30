@@ -1,40 +1,21 @@
 import React from 'react';
 
-type ScheduleLineProps = {
-  event: string;
-  datetime: string;
-};
-
-const ScheduleLine = ({
-  event,
-  datetime,
-}: ScheduleLineProps): React.ReactNode => {
-  const fontWeight = event === 'RACE DAY' ? 'font-semibold' : 'font-regular';
-  const fontColor = event === 'RACE DAY' ? 'text-f1-teal' : 'text-white';
-
-  const pstDate = utcToPst(datetime).split(', ');
-
-  return (
-    <div className='grid grid-cols-8'>
-      <p className={`col-span-4 text-sm ${fontWeight} ${fontColor}`}>{event}</p>
-      <p className={`col-span-3 text-sm ${fontWeight} ${fontColor}`}>
-        {pstDate[0]}
-      </p>
-      <p className={`col-span-1 text-sm ${fontWeight} ${fontColor}`}>
-        {pstDate[1].replace(/(:\d{2}| [AP]M)$/, '')}
-      </p>
-    </div>
-  );
-};
-
 type RaceWeekendScheduleProps = {
-  schedule: any;
+  raceId: string;
 };
 
-const RaceWeekendSchedule = ({
-  schedule,
-}: RaceWeekendScheduleProps): React.ReactNode => {
-  const parsedSchedule = JSON.parse(schedule);
+async function getRaceSchedule(raceId: string) {
+  const res = await fetch(`http://localhost:3000/api/raceschedule/${raceId}`);
+  return res.json();
+}
+
+const RaceWeekendSchedule = async ({
+  raceId,
+}: RaceWeekendScheduleProps): Promise<React.ReactNode> => {
+  const res = getRaceSchedule(raceId);
+  const schedule = await Promise.resolve(res);
+
+  const parsedSchedule = JSON.parse(schedule['data']);
   console.log(parsedSchedule);
 
   return (
@@ -60,6 +41,33 @@ const RaceWeekendSchedule = ({
         event='RACE DAY'
         datetime={parsedSchedule['Session5DateUtc']}
       />
+    </div>
+  );
+};
+
+type ScheduleLineProps = {
+  event: string;
+  datetime: string;
+};
+
+const ScheduleLine = ({
+  event,
+  datetime,
+}: ScheduleLineProps): React.ReactNode => {
+  const fontWeight = event === 'RACE DAY' ? 'font-semibold' : 'font-regular';
+  const fontColor = event === 'RACE DAY' ? 'text-f1-teal' : 'text-white';
+
+  const pstDate = utcToPst(datetime).split(', ');
+
+  return (
+    <div className='grid grid-cols-8'>
+      <p className={`col-span-4 text-sm ${fontWeight} ${fontColor}`}>{event}</p>
+      <p className={`col-span-3 text-sm ${fontWeight} ${fontColor}`}>
+        {pstDate[0]}
+      </p>
+      <p className={`col-span-1 text-sm ${fontWeight} ${fontColor}`}>
+        {pstDate[1].replace(/(:\d{2}| [AP]M)$/, '')}
+      </p>
     </div>
   );
 };

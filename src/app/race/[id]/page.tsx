@@ -4,32 +4,30 @@ import RaceWeekendSchedule from '@/components/RaceWeekendSchedule';
 import WeatherSection from '@/components/WeatherSection';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Suspense } from 'react';
 
-async function getRaceInfo(raceId: string) {
-  const res = await fetch(`http://localhost:3000/api/raceinfo/${raceId}`);
-  return res.json();
-}
+// async function getRaceInfo(raceId: string) {
+//   const res = await fetch(`http://localhost:3000/api/raceinfo/${raceId}`);
+//   return res.json();
+// }
 
-async function getRaceSchedule(raceId: string) {
-  const res = await fetch(`http://localhost:3000/api/raceschedule/${raceId}`);
-  return res.json();
-}
+// async function getRaceSchedule(raceId: string) {
+//   const res = await fetch(`http://localhost:3000/api/raceschedule/${raceId}`);
+//   return res.json();
+// }
 
 export default async function RaceDetails({
   params,
 }: {
   params: { id: string };
 }) {
-  // const res = await fetch(`http://localhost:3000/api/raceinfo/${params.id}`);
-  // const results = await res.json();
+  // const raceInfo = getRaceInfo(params.id);
+  // const raceSchedule = getRaceSchedule(params.id);
 
-  const raceInfo = getRaceInfo(params.id);
-  const raceSchedule = getRaceSchedule(params.id);
+  // const [results, schedule] = await Promise.all([raceInfo, raceSchedule]);
 
-  const [results, schedule] = await Promise.all([raceInfo, raceSchedule]);
-
-  console.log(results);
-  console.log(schedule);
+  // console.log(results);
+  // console.log(schedule);
 
   return (
     <div className='flex w-full space-x-4'>
@@ -65,7 +63,9 @@ export default async function RaceDetails({
 
         <div className='h-[250px] flex space-x-4'>
           <div className='w-4/5 shadow-lg'>
-            <RaceWeekendSchedule schedule={schedule['data']} />
+            <Suspense fallback={<p>Race schedule loading...</p>}>
+              <RaceWeekendSchedule raceId={params.id} />
+            </Suspense>
           </div>
           <div className='w-1/5 shadow-lg'>
             <WeatherSection />
@@ -73,7 +73,9 @@ export default async function RaceDetails({
         </div>
 
         <div className='flex-auto'>
-          <RaceResultsGrid results={results} />
+          <Suspense fallback={<p>Race results is loading...</p>}>
+            {/* <RaceResultsGrid results={results} /> */}
+          </Suspense>
         </div>
       </div>
     </div>
