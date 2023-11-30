@@ -5,8 +5,12 @@ import WeatherSection from '@/components/WeatherSection';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default async function RaceDetails() {
-  const res = await fetch('http://localhost:3000/api/raceinfo/2');
+export default async function RaceDetails({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const res = await fetch(`http://localhost:3000/api/raceinfo/${params.id}`);
   const results = await res.json();
 
   return (
