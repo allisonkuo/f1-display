@@ -46,6 +46,7 @@ export default async function RaceDetails({
         <div className='h-[250px] flex space-x-4'>
           <div className='w-4/5 shadow-lg'>
             <Suspense fallback={<p>Race schedule loading...</p>}>
+              {/* @ts-expect-error Async Server Component */}
               <RaceWeekendSchedule raceId={params.id} />
             </Suspense>
           </div>
@@ -56,6 +57,7 @@ export default async function RaceDetails({
 
         <div className='flex-auto'>
           <Suspense fallback={<p>Race results is loading...</p>}>
+            {/* @ts-expect-error Async Server Component */}
             <RaceResultsGrid raceId={params.id} />
           </Suspense>
         </div>
