@@ -24,24 +24,32 @@ def get_race_calendar():
     parsed_schedule = event_schedule.iloc[1:][['RoundNumber', 'EventName', 'HasEventCompleted']]
     return parsed_schedule.to_json(orient="records")
 
-@app.route("/api/raceinfo/<race_round>", methods=["GET"])
-def get_race_info(race_round):
+@app.route("/api/qualifying/<race_round>", methods=["GET"])
+def get_qualifying_results(race_round):
     round = int(race_round)
 
+    # TODO: return early if qual hasn't happened yet to avoid unnecessary API calls
     qual_session = fastf1.get_session(2023, round, 'Qualifying')
     qual_session.load(telemetry = "false", weather="false", messages = "false")
 
+    fields = ['DriverNumber', 'Abbreviation', 'FullName', 'ClassifiedPosition']
+    pole_position = qual_session.results.iloc[0][fields]
+
+    return pole_position.to_json()
+
+@app.route("/api/race/<race_round>", methods=["GET"])
+def get_race_info(race_round):
+    round = int(race_round)
+
+    # TODO: return early if race hasn't happened yet to avoid unnecessary API calls
     race_session = fastf1.get_session(2023, round, 'Race')
     race_session.load(telemetry = "false", weather="false", messages = "false")
 
     fields = ['DriverNumber', 'Abbreviation', 'FullName', 'ClassifiedPosition']
-    pole_position = qual_session.results.iloc[0][fields]
     race_podium = race_session.results.iloc[:3][fields]
 
-    return {
-        "pole": pole_position.to_json(),
-        "podium": race_podium.to_json(orient="records"),
-    }
+    return race_podium.to_json(orient="records")
+
 
 @app.route("/api/raceschedule/<race_round>", methods=["GET"])
 def get_race_schedule(race_round):

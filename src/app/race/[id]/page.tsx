@@ -1,5 +1,5 @@
 import CircuitInfo from '@/components/CircuitInfo';
-import RaceResultsGrid from '@/components/RaceResults/RaceResultsGrid';
+import WeekendResultsGrid from '@/components/RaceResults/WeekendResultsGrid';
 import RaceWeekendSchedule from '@/components/RaceWeekendSchedule';
 import WeatherSection from '@/components/WeatherSection';
 import Image from 'next/image';
@@ -56,10 +56,7 @@ export default async function RaceDetails({
         </div>
 
         <div className='flex-auto'>
-          <Suspense fallback={<p>Race results is loading...</p>}>
-            {/* @ts-expect-error Async Server Component */}
-            <RaceResultsGrid raceId={params.id} />
-          </Suspense>
+          <WeekendResultsGrid raceId={params.id} />
         </div>
       </div>
     </div>
