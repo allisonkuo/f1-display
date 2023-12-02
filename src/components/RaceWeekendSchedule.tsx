@@ -21,22 +21,17 @@ const RaceWeekendSchedule = async ({
   return (
     <div className='h-full bg-f1-grey px-6 py-4 space-y-4'>
       <h3 className='font-display text-white text-lg'>Schedule</h3>
-      <ScheduleLine
-        event='Free Practice 1'
-        datetime={parsedSchedule['Session1DateUtc']}
-      />
-      <ScheduleLine
-        event='Free Practice 2'
-        datetime={parsedSchedule['Session2DateUtc']}
-      />
-      <ScheduleLine
-        event='Free Practice 3'
-        datetime={parsedSchedule['Session3DateUtc']}
-      />
-      <ScheduleLine
-        event='Qualifying'
-        datetime={parsedSchedule['Session4DateUtc']}
-      />
+      {Array.from(Array(4).keys()).map((x: number) => {
+        return (
+          <ScheduleLine
+            key={x}
+            event={parsedSchedule[`Session${x + 1}`]}
+            datetime={parsedSchedule[`Session${x + 1}DateUtc`]}
+          />
+        );
+      })}
+      {/* 5th session is always race day
+       */}
       <ScheduleLine
         event='RACE DAY'
         datetime={parsedSchedule['Session5DateUtc']}
@@ -57,26 +52,33 @@ const ScheduleLine = ({
   const fontWeight = event === 'RACE DAY' ? 'font-semibold' : 'font-regular';
   const fontColor = event === 'RACE DAY' ? 'text-f1-teal' : 'text-white';
 
-  const pstDate = utcToPst(datetime).split(', ');
+  const pstDateTime = utcToPst(datetime).split(', ');
+
+  const date = pstDateTime[0];
+  const time = pstDateTime[1];
 
   return (
     <div className='grid grid-cols-8'>
       <p className={`col-span-4 text-sm ${fontWeight} ${fontColor}`}>{event}</p>
-      <p className={`col-span-3 text-sm ${fontWeight} ${fontColor}`}>
-        {pstDate[0]}
-      </p>
-      <p className={`col-span-1 text-sm ${fontWeight} ${fontColor}`}>
-        {pstDate[1].replace(/(:\d{2}| [AP]M)$/, '')}
-      </p>
+      <p className={`col-span-3 text-sm ${fontWeight} ${fontColor}`}>{date}</p>
+      <p className={`col-span-1 text-sm ${fontWeight} ${fontColor}`}>{time}</p>
     </div>
   );
 };
 
 const utcToPst = (epoch: string) => {
   const utcDate = new Date(epoch);
-  return utcDate.toLocaleString('en-GB', {
+  const pstDate = utcDate.toLocaleString('en-US', {
     timeZone: 'America/Los_Angeles',
+    hour12: false,
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
   });
+
+  console.log(pstDate);
+  return pstDate;
 };
 
 export default RaceWeekendSchedule;

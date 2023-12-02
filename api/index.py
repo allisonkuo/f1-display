@@ -43,8 +43,7 @@ def get_race_info(race_round):
 
     # TODO: return early if race hasn't happened yet to avoid unnecessary API calls
     race_session = fastf1.get_session(2023, round, 'Race')
-    race_session.load(laps=False, telemetry=False, weather=True, messages=False)
-    app.logger.warning(race_session.weather_data)
+    race_session.load(laps=False, telemetry=False, weather=False, messages=False)
 
     fields = ['DriverNumber', 'Abbreviation', 'FullName', 'ClassifiedPosition']
     race_podium = race_session.results.iloc[:3][fields]
