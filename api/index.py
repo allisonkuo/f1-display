@@ -24,6 +24,15 @@ def get_calendar():
     parsed_schedule = event_schedule.iloc[1:][['RoundNumber', 'EventName', 'HasEventCompleted']]
     return parsed_schedule.to_json(orient="records")
 
+@app.route("/api/event/<race_round>", methods=["GET"])
+def get_event(race_round):
+    event_schedule = fastf1.get_event_schedule(2023)
+
+    fields = ['EventName', 'Location', 'Country']
+    current_event = event_schedule.iloc[int(race_round)]
+
+    return current_event.to_json()
+
 @app.route("/api/qualifying/<race_round>", methods=["GET"])
 def get_qualifying_results(race_round):
     round = int(race_round)
@@ -49,14 +58,6 @@ def get_race_info(race_round):
     race_podium = race_session.results.iloc[:3][fields]
 
     return race_podium.to_json(orient="records")
-
-
-@app.route("/api/schedule/<race_round>", methods=["GET"])
-def get_schedule(race_round):
-    event_schedule = fastf1.get_event_schedule(2023)
-    race_schedule = event_schedule.iloc[int(race_round)]
-
-    return { "data": race_schedule.to_json() }
 
 def localize_datetime(date):
     app.logger.warning(date)

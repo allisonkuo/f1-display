@@ -15,8 +15,6 @@ const RaceResults = async ({ raceId }: Props): Promise<React.ReactNode> => {
   const res = getRaceInfo(raceId);
   const podium = await Promise.resolve(res);
 
-  console.log(podium);
-
   return (
     <>
       {/* 1st Place */}

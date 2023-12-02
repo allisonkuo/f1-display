@@ -16,8 +16,6 @@ const QualifyingResults = async ({
   const res = getQualifyingResults(raceId);
   const pole = await Promise.resolve(res);
 
-  console.log(pole);
-
   return (
     <ResultItemVertical
       position='Pole'

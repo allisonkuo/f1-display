@@ -1,23 +1,10 @@
 import React from 'react';
 
-type RaceWeekendScheduleProps = {
-  raceId: string;
+type Props = {
+  event: any;
 };
 
-async function getSchedule(raceId: string) {
-  const res = await fetch(`http://localhost:3000/api/schedule/${raceId}`);
-  return res.json();
-}
-
-const RaceWeekendSchedule = async ({
-  raceId,
-}: RaceWeekendScheduleProps): Promise<React.ReactNode> => {
-  const res = getSchedule(raceId);
-  const schedule = await Promise.resolve(res);
-
-  const parsedSchedule = JSON.parse(schedule['data']);
-  console.log(parsedSchedule);
-
+const RaceWeekendSchedule = ({ event }: Props): React.ReactNode => {
   return (
     <div className='h-full bg-f1-grey px-6 py-4 space-y-4'>
       <h3 className='font-display text-white text-lg'>Schedule</h3>
@@ -25,17 +12,14 @@ const RaceWeekendSchedule = async ({
         return (
           <ScheduleLine
             key={x}
-            event={parsedSchedule[`Session${x + 1}`]}
-            datetime={parsedSchedule[`Session${x + 1}DateUtc`]}
+            event={event[`Session${x + 1}`]}
+            datetime={event[`Session${x + 1}DateUtc`]}
           />
         );
       })}
       {/* 5th session is always race day
        */}
-      <ScheduleLine
-        event='RACE DAY'
-        datetime={parsedSchedule['Session5DateUtc']}
-      />
+      <ScheduleLine event='RACE DAY' datetime={event['Session5DateUtc']} />
     </div>
   );
 };
