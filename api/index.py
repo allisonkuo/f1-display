@@ -30,7 +30,7 @@ def get_qualifying_results(race_round):
 
     # TODO: return early if qual hasn't happened yet to avoid unnecessary API calls
     qual_session = fastf1.get_session(2023, round, 'Qualifying')
-    qual_session.load(telemetry = "false", weather="false", messages = "false")
+    qual_session.load(laps=False, telemetry=False, weather=False, messages=False)
 
     fields = ['DriverNumber', 'Abbreviation', 'FullName', 'ClassifiedPosition']
     pole_position = qual_session.results.iloc[0][fields]
@@ -43,7 +43,7 @@ def get_race_info(race_round):
 
     # TODO: return early if race hasn't happened yet to avoid unnecessary API calls
     race_session = fastf1.get_session(2023, round, 'Race')
-    race_session.load(telemetry = "false", weather="false", messages = "false")
+    race_session.load(laps=False, telemetry=False, weather=False, messages=False)
 
     fields = ['DriverNumber', 'Abbreviation', 'FullName', 'ClassifiedPosition']
     race_podium = race_session.results.iloc[:3][fields]
