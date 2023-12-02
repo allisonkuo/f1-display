@@ -4,15 +4,15 @@ type RaceWeekendScheduleProps = {
   raceId: string;
 };
 
-async function getRaceSchedule(raceId: string) {
-  const res = await fetch(`http://localhost:3000/api/raceschedule/${raceId}`);
+async function getSchedule(raceId: string) {
+  const res = await fetch(`http://localhost:3000/api/schedule/${raceId}`);
   return res.json();
 }
 
 const RaceWeekendSchedule = async ({
   raceId,
 }: RaceWeekendScheduleProps): Promise<React.ReactNode> => {
-  const res = getRaceSchedule(raceId);
+  const res = getSchedule(raceId);
   const schedule = await Promise.resolve(res);
 
   const parsedSchedule = JSON.parse(schedule['data']);

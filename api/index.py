@@ -10,8 +10,8 @@ app = Flask(__name__)
 def healthcheck():
     return {"status": "success", "message": "Integrate Flask Framework with Next.js"}
 
-@app.route("/api/racecalendar", methods=["GET"])
-def get_race_calendar():
+@app.route("/api/calendar", methods=["GET"])
+def get_calendar():
     event_schedule = fastf1.get_event_schedule(2023)
 
     current_date = pd.Timestamp.now(tz='US/Pacific')
@@ -43,7 +43,8 @@ def get_race_info(race_round):
 
     # TODO: return early if race hasn't happened yet to avoid unnecessary API calls
     race_session = fastf1.get_session(2023, round, 'Race')
-    race_session.load(laps=False, telemetry=False, weather=False, messages=False)
+    race_session.load(laps=False, telemetry=False, weather=True, messages=False)
+    app.logger.warning(race_session.weather_data)
 
     fields = ['DriverNumber', 'Abbreviation', 'FullName', 'ClassifiedPosition']
     race_podium = race_session.results.iloc[:3][fields]
@@ -51,15 +52,12 @@ def get_race_info(race_round):
     return race_podium.to_json(orient="records")
 
 
-@app.route("/api/raceschedule/<race_round>", methods=["GET"])
-def get_race_schedule(race_round):
+@app.route("/api/schedule/<race_round>", methods=["GET"])
+def get_schedule(race_round):
     event_schedule = fastf1.get_event_schedule(2023)
     race_schedule = event_schedule.iloc[int(race_round)]
 
     return { "data": race_schedule.to_json() }
-
-
-    
 
 def localize_datetime(date):
     app.logger.warning(date)
