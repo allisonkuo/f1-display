@@ -3,6 +3,7 @@ import UpcomingRace from '@/components/UpcomingRace/UpcomingRace';
 import Image from 'next/image';
 import Link from 'next/link';
 
+// TODO: get the next races
 export default function Home() {
   return (
     <main className='flex flex-row min-h-screen'>
@@ -11,7 +12,7 @@ export default function Home() {
         <div className='flex flex-col h-full'>
           <div className='flex h-3/5 justify-center'>
             <div className='flex-auto pl-20 pt-24'>
-              <Link href='/race'>
+              <Link href='/race/1'>
                 <UpcomingRace />
               </Link>
             </div>

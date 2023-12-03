@@ -1,4 +1,3 @@
-from datetime import date
 from flask import Flask
 import fastf1
 import pandas as pd
@@ -10,9 +9,13 @@ app = Flask(__name__)
 def healthcheck():
     return {"status": "success", "message": "Integrate Flask Framework with Next.js"}
 
-@app.route("/api/calendar", methods=["GET"])
-def get_calendar():
-    event_schedule = fastf1.get_event_schedule(2023)
+# Get the race calendar for a given year
+@app.route("/api/calendar/<year>", methods=["GET"])
+def get_calendar(year):
+    event_schedule = fastf1.get_event_schedule(int(year))
+    if event_schedule.empty:
+        app.logger.warn("this frame is empty")
+        return []
 
     current_date = pd.Timestamp.now(tz='US/Pacific')
 
@@ -24,6 +27,11 @@ def get_calendar():
     parsed_schedule = event_schedule.iloc[1:][['RoundNumber', 'EventName', 'HasEventCompleted']]
     return parsed_schedule.to_json(orient="records")
 
+# @app.route("/api/races/next", method=["GET"])
+# def get_next_race():
+#     return ""
+
+# Get the info and schedule for a given race weekend
 @app.route("/api/event/<race_round>", methods=["GET"])
 def get_event(race_round):
     event_schedule = fastf1.get_event_schedule(2023)
@@ -33,6 +41,7 @@ def get_event(race_round):
 
     return current_event.to_json()
 
+# Get the results from the qualifying session of the given race weekend
 @app.route("/api/qualifying/<race_round>", methods=["GET"])
 def get_qualifying_results(race_round):
     round = int(race_round)
@@ -46,6 +55,7 @@ def get_qualifying_results(race_round):
 
     return pole_position.to_json()
 
+# Get the results from the race session of the given race weekend
 @app.route("/api/race/<race_round>", methods=["GET"])
 def get_race_info(race_round):
     round = int(race_round)
