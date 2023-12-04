@@ -22,7 +22,7 @@ const RemainingSchedule = ({ remainingEvents }: Prop): React.ReactNode => {
             return (
               <div key={event.RoundNumber} className='flex-none'>
                 <button className='border-2 border-slate-300 font-semibold uppercase rounded-2xl px-6 py-3 text-xs text-white shadow-lg'>
-                  <Link href={`/races/${event.RoundNumber}`}>
+                  <Link href={`/race/${event.RoundNumber}`}>
                     {event.EventName.replace('Grand Prix', 'GP')}
                   </Link>
                 </button>
