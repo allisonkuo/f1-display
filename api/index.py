@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask
 import fastf1
 import pandas as pd
@@ -27,12 +28,14 @@ def get_calendar(year):
     parsed_schedule = event_schedule.iloc[1:][['RoundNumber', 'EventName', 'HasEventCompleted']]
     return parsed_schedule.to_json(orient="records")
 
-# @app.route("/api/races/next", method=["GET"])
-# def get_next_race():
-#     return ""
+# Get info for the remaining races in the calendar
+@app.route("/api/remainingevents", methods=["GET"])
+def get_remaining_events():
+    remaining_events = fastf1.get_events_remaining(datetime.now())
+    return remaining_events.to_json(orient="records")
 
 # Get the info and schedule for a given race weekend
-@app.route("/api/event/<race_round>", methods=["GET"])
+@app.route("/api/events/<race_round>", methods=["GET"])
 def get_event(race_round):
     event_schedule = fastf1.get_event_schedule(2023)
 
@@ -56,7 +59,7 @@ def get_qualifying_results(race_round):
     return pole_position.to_json()
 
 # Get the results from the race session of the given race weekend
-@app.route("/api/race/<race_round>", methods=["GET"])
+@app.route("/api/races/<race_round>", methods=["GET"])
 def get_race_info(race_round):
     round = int(race_round)
 
