@@ -41,7 +41,7 @@ const UpcomingRace = ({ raceEvent }: Props) => {
           </h1>
         </div>
 
-        <Countdown />
+        <Countdown raceTimeEpoch={raceEvent.Session5DateUtc || ''} />
       </div>
     </Link>
   );
