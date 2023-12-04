@@ -8,6 +8,11 @@ type Props = {
 const Countdown = ({ raceTimeEpoch }: Props): React.ReactNode => {
   const currentTimeEpoch = Date.now();
 
+  // TEST DATA
+  // const currentTimeEpoch = Math.floor(
+  //   new Date('2023-10-22 11:30:30').getTime()
+  // );
+
   // This should never happen, but just in case
   if (currentTimeEpoch > raceTimeEpoch) {
     return (
@@ -17,8 +22,9 @@ const Countdown = ({ raceTimeEpoch }: Props): React.ReactNode => {
     );
   }
 
+  // Note: epoch is given in milliseconds
   const timeDiff = raceTimeEpoch - currentTimeEpoch;
-  const formattedTimeDiff = secondsToDhm(timeDiff);
+  const formattedTimeDiff = secondsToDhm(timeDiff / 1000);
 
   console.log(timeDiff);
   console.log(formattedTimeDiff);
