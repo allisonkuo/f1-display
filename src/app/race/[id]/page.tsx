@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 
 async function getEvent(raceId: string) {
-  const res = await fetch(`http://localhost:3000/api/event/${raceId}`);
+  const res = await fetch(`http://localhost:3000/api/events/${raceId}`);
   return res.json();
 }
 

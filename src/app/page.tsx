@@ -3,8 +3,18 @@ import UpcomingRace from '@/components/UpcomingRace/UpcomingRace';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// TODO: get the next races
-export default function Home() {
+async function getRemainingRaces() {
+  const res = await fetch(`http://localhost:3000/api/remainingevents/`);
+  return res.json();
+}
+
+export default async function Home() {
+  const res = getRemainingRaces();
+  const remainingEvents = await Promise.resolve(res);
+
+  const nextRace = remainingEvents[0];
+  const nextThreeAfter = remainingEvents.slice(1);
+
   return (
     <main className='flex flex-row min-h-screen'>
       {/* Left Half */}
@@ -12,8 +22,8 @@ export default function Home() {
         <div className='flex flex-col h-full'>
           <div className='flex h-3/5 justify-center'>
             <div className='flex-auto pl-20 pt-24'>
-              <Link href='/race/1'>
-                <UpcomingRace />
+              <Link href={`/race/${nextRace.RoundNumber}`}>
+                <UpcomingRace event={nextRace} />
               </Link>
             </div>
             <div className='w-[105px] h-full relative'>
@@ -46,7 +56,7 @@ export default function Home() {
       </div>
 
       <div className='w-[300px] pt-24 bg-gradient-to-b from-f1-red to-gradient-dark-red'>
-        <RemainingSchedule />
+        <RemainingSchedule remainingEvents={nextThreeAfter} />
       </div>
     </main>
   );

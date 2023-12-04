@@ -1,6 +1,11 @@
 import Countdown from './CountdownTimer';
 
-const UpcomingRace = () => {
+type Props = {
+  event: any;
+};
+
+const UpcomingRace = ({ event }: Props) => {
+  console.log(event);
   return (
     <div className='flex flex-col items-center text-center space-y-8'>
       <div>
@@ -11,7 +16,8 @@ const UpcomingRace = () => {
 
       <div>
         <h1 className='text-4xl font-bold uppercase text-white font-display'>
-          Emilia Romagna GP
+          {event.EventName != undefined &&
+            event.EventName.replace('Grand Prix', 'GP')}
         </h1>
       </div>
 

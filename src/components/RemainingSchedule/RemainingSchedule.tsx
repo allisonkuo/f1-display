@@ -1,20 +1,24 @@
 import React from 'react';
 import Link from 'next/link';
 
-const upcomingRaces = ['Monaco GP', 'Canadian GP', 'Spanish GP'];
+type Prop = {
+  remainingEvents: any;
+};
 
-const RemainingSchedule = (): React.ReactNode => {
+const RemainingSchedule = ({ remainingEvents }: Prop): React.ReactNode => {
   return (
     <div className='flex flex-col space-y-8 items-center'>
       <div className='flex-none'>
         <h3 className='font-bold uppercase text-black'>Remaining Schedule</h3>
       </div>
 
-      {upcomingRaces.map((race: string) => {
+      {remainingEvents.map((event: any) => {
         return (
-          <div key={race} className='flex-none'>
+          <div key={event.RoundNumber} className='flex-none'>
             <button className='border-2 border-slate-300 font-semibold uppercase rounded-2xl px-6 py-3 text-xs text-white shadow-lg'>
-              <Link href='/race'>{race}</Link>
+              <Link href={`/races/${event.RoundNumber}`}>
+                {event.EventName.replace('Grand Prix', 'GP')}
+              </Link>
             </button>
           </div>
         );

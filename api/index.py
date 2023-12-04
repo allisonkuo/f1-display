@@ -31,8 +31,11 @@ def get_calendar(year):
 # Get info for the remaining races in the calendar
 @app.route("/api/remainingevents", methods=["GET"])
 def get_remaining_events():
-    remaining_events = fastf1.get_events_remaining(datetime.now())
-    return remaining_events.to_json(orient="records")
+    remaining_events = fastf1.get_events_remaining(datetime(2023, 10, 22))
+
+    # Only return the next four races for the landing page
+    # Can update later to return all if we need that
+    return remaining_events.iloc[:4].to_json(orient="records")
 
 # Get the info and schedule for a given race weekend
 @app.route("/api/events/<race_round>", methods=["GET"])

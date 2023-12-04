@@ -6,10 +6,10 @@ type Props = {
   raceId: string;
 };
 
-async function getRaceInfo(raceId: string) {
-  const res = await fetch(`http://localhost:3000/api/race/${raceId}`);
+const getRaceInfo = async (raceId: string) => {
+  const res = await fetch(`http://localhost:3000/api/races/${raceId}`);
   return res.json();
-}
+};
 
 const RaceResults = async ({ raceId }: Props): Promise<React.ReactNode> => {
   const res = getRaceInfo(raceId);
@@ -21,7 +21,7 @@ const RaceResults = async ({ raceId }: Props): Promise<React.ReactNode> => {
       <div className='w-[134px] bg-f1-teal shadow-lg'>
         <ResultItemVertical
           position='1'
-          driverName={podium[0]['Abbreviation']}
+          driverName={podium[0].Abbreviation}
           imagePath='/images/drivers/max-verstappen-transparent.png'
         />
       </div>
@@ -32,7 +32,7 @@ const RaceResults = async ({ raceId }: Props): Promise<React.ReactNode> => {
         <div className='h-1/2 bg-f1-teal shadow-lg'>
           <ResultItemHorizontal
             position='2'
-            driverName={podium[1]['Abbreviation']}
+            driverName={podium[1].Abbreviation}
             imagePath='/images/drivers/lewis-hamilton-transparent.png'
           />
         </div>
@@ -41,7 +41,7 @@ const RaceResults = async ({ raceId }: Props): Promise<React.ReactNode> => {
         <div className='h-1/2 bg-f1-teal shadow-lg'>
           <ResultItemHorizontal
             position='3'
-            driverName={podium[2]['Abbreviation']}
+            driverName={podium[2].Abbreviation}
             imagePath='/images/drivers/charles-leclerc-transparent.png'
           />
         </div>
