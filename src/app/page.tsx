@@ -22,9 +22,7 @@ export default async function Home() {
         <div className='flex flex-col h-full'>
           <div className='flex h-3/5 justify-center'>
             <div className='flex-auto pl-20 pt-24'>
-              <Link href={`/race/${nextRace.RoundNumber}`}>
-                <UpcomingRace event={nextRace} />
-              </Link>
+              <UpcomingRace raceEvent={nextRace} />
             </div>
             <div className='w-[105px] h-full relative'>
               {/* a placeholder for the YEAR text */}
