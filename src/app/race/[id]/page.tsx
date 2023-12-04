@@ -30,7 +30,7 @@ export default async function RaceDetails({
 
       <div className='w-1/2 flex flex-col space-y-4'>
         <div className='h-[55px] flex'>
-          <div>
+          <div className='flex-auto'>
             <h3 className='font-display text-2xl text-white'>
               {event['EventName']}
             </h3>
@@ -39,16 +39,15 @@ export default async function RaceDetails({
             </h4>
           </div>
           {/* Probably should style this via flex instead of hardcoding a padding, but whatever for now */}
-          <div>
+          <div className='w-[70px]'>
             <Link href='/'>
               <Image
                 src='/images/F1.svg.png'
                 alt='Logo'
-                width={100}
+                width={70}
                 height={50}
                 style={{
                   paddingTop: '10px',
-                  paddingLeft: '30px',
                 }}
               />
             </Link>
