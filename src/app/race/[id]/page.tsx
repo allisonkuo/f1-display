@@ -32,10 +32,10 @@ export default async function RaceDetails({
         <div className='h-[55px] flex'>
           <div className='flex-auto'>
             <h3 className='font-display text-2xl text-white'>
-              {event['EventName']}
+              {event.EventName}
             </h3>
             <h4 className='text-white'>
-              {event['Location']}, {event['Country']}
+              {event.Location}, {event.Country}
             </h4>
           </div>
           {/* Probably should style this via flex instead of hardcoding a padding, but whatever for now */}

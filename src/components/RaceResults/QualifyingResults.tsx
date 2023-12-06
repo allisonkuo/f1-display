@@ -16,11 +16,14 @@ const QualifyingResults = async ({
   const res = getQualifyingResults(raceId);
   const pole = await Promise.resolve(res);
 
+  const isAvailable = pole.Abbreviation != undefined;
+
   return (
     <ResultItemVertical
       position='Pole'
-      driverName={pole.Abbreviation}
+      driverName={isAvailable ? pole.Abbreviation : 'TBD'}
       imagePath='/images/drivers/lando-norris-transparent.png'
+      isAvailable={isAvailable}
     />
   );
 };
